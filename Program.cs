@@ -41,11 +41,24 @@ namespace PassphraseGeneratorApp
                 }
             }
 
+            // Boxed title
+            string appName = "Passphrase Generator";
+            int boxWidth = appName.Length + 4; // Width of the box
+            Console.WriteLine("┌" + new string('─', boxWidth) + "┐");
+            Console.WriteLine("│  " + appName + "  │");
+            Console.WriteLine("└" + new string('─', boxWidth) + "┘");
+
             try
             {
                 PassphraseGenerator generator = new PassphraseGenerator(language);
                 string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement);
-                Console.WriteLine($"Generated Passphrase: {passphrase}");
+
+                // Output with colors
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Generated Passphrase: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(passphrase);
+                Console.ResetColor(); // Reset to default color
             }
             catch (Exception ex)
             {
