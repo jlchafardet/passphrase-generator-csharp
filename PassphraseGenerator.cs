@@ -6,7 +6,7 @@ namespace PassphraseGeneratorApp
 {
     public class PassphraseGenerator
     {
-        private List<string> wordList;
+        private List<string> wordList = new List<string>(); // Initialize to an empty list
 
         public PassphraseGenerator(string language)
         {
