@@ -9,8 +9,7 @@ A console app for generating strong and unique passphrases.
 - Meet minimum and maximum length requirements (12-128 characters, 2-15 words)
 - Randomly swap cases (uppercase) at least half of the letters on each word
 - Handle errors and exceptions
-- Update the README.md file to document new features or changes made to the codebase
-- Use strikethroughs to mark as completed any tasks, features, or subfeatures
+
 
 ## Installation
 
