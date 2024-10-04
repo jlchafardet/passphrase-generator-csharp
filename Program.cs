@@ -69,13 +69,17 @@ namespace PassphraseGeneratorApp
             try
             {
                 // After parsing command-line arguments
-                Console.WriteLine("Do you want to add a custom word to your passphrase? (yes/no)");
+                string customWordPrompt = language == "es" 
+                    ? "¿Quieres agregar una palabra personalizada a tu frase de contraseña? (sí/no)" 
+                    : "Do you want to add a custom word to your passphrase? (yes/no)";
+                
+                Console.WriteLine(customWordPrompt);
                 string customWordResponse = Console.ReadLine()?.ToLower();
 
                 string customWord = string.Empty; // Initialize as an empty string
                 if (customWordResponse == "yes" || customWordResponse == "sí")
                 {
-                    Console.WriteLine("Please enter your custom word:");
+                    Console.WriteLine(language == "es" ? "Por favor, ingresa tu palabra personalizada:" : "Please enter your custom word:");
                     string? customWordInput = Console.ReadLine(); // Read input separately
                     if (!string.IsNullOrEmpty(customWordInput))
                     {
