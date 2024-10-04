@@ -6,6 +6,13 @@ namespace PassphraseGeneratorApp
     {
         static void Main(string[] args)
         {
+            // Check for the --help argument
+            if (args.Length > 0 && args[0] == "--help")
+            {
+                DisplayHelp();
+                return; // Exit the application after displaying help
+            }
+
             // Set default values for language, word count, and vowel replacement
             string language = "en"; // Default language is English
             int wordCount = 2; // Default minimum word length is 2
@@ -109,6 +116,20 @@ namespace PassphraseGeneratorApp
                 // Print error message for any other exceptions
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
+        }
+
+        // Method to display help information
+        static void DisplayHelp()
+        {
+            Console.WriteLine("Usage: dotnet run [options]");
+            Console.WriteLine();
+            Console.WriteLine("Options:");
+            Console.WriteLine("  --language <lang>          Set the language for the passphrase (default: en)");
+            Console.WriteLine("  --word-length <length>     Set the number of words in the passphrase (default: 2, range: 2-15)");
+            Console.WriteLine("  --vowel-replacement <true|false>  Enable or disable vowel replacement (default: false)");
+            Console.WriteLine("  --help                     Display this help message.");
+            Console.WriteLine();
+            Console.WriteLine("If no arguments are provided, the application defaults to generating a passphrase with 2 words in English.");
         }
     }
 }
