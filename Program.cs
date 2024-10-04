@@ -29,7 +29,8 @@ namespace PassphraseGeneratorApp
                         case "--language":
                             if (i + 1 < args.Length)
                             {
-                                language = args[++i]; // Set language to the first parameter received
+                                language = args[i + 1] ?? "en"; // Use null-coalescing operator
+                                i++; // Skip the next argument
                             }
                             break;
                         case "--word-length":

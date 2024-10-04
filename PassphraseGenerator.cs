@@ -24,10 +24,13 @@ namespace PassphraseGeneratorApp
                 var words = new List<string>();
                 using (var reader = new StreamReader(filePath))
                 {
-                    string line;
+                    string? line; // Use nullable string
                     while ((line = reader.ReadLine()) != null)
                     {
-                        words.Add(line); // Read each line into the words list
+                        if (line != null) // Check for null before adding
+                        {
+                            words.Add(line); // Read each line into the words list
+                        }
                     }
                 }
                 return words; // Return the loaded wordlist
