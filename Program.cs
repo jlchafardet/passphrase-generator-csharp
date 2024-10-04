@@ -123,13 +123,22 @@ namespace PassphraseGeneratorApp
         {
             Console.WriteLine("Usage: dotnet run [options]");
             Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.White; // Set color for the main text
             Console.WriteLine("Options:");
-            Console.WriteLine("  --language <lang>          Set the language for the passphrase (default: en)");
-            Console.WriteLine("  --word-length <length>     Set the number of words in the passphrase (default: 2, range: 2-15)");
-            Console.WriteLine("  --vowel-replacement <true|false>  Enable or disable vowel replacement (default: false)");
-            Console.WriteLine("  -help                      Display this help message.");
+
+            Console.ForegroundColor = ConsoleColor.Green; // Set color for options
+            Console.WriteLine("  --language <lang>                  Set the language for the passphrase (default: en)");
+            Console.WriteLine("  --word-length <length>             Set the number of words in the passphrase (default: 2, range: 2-15)");
+            Console.WriteLine("  --vowel-replacement <true|false>   Enable or disable vowel replacement (default: false)");
+            Console.WriteLine("  -help                              Display this help message.");
+
+            Console.ForegroundColor = ConsoleColor.White; // Reset color for the rest of the text
             Console.WriteLine();
             Console.WriteLine("If no arguments are provided, the application defaults to generating a passphrase with 2 words in English.");
+
+            // Reset color to default
+            Console.ResetColor();
         }
     }
 }
