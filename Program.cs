@@ -84,7 +84,7 @@ namespace PassphraseGeneratorApp
                 Console.WriteLine(customWordPrompt);
                 string customWordResponse = Console.ReadLine()?.ToLower();
 
-                string customWord = string.Empty; // Initialize as an empty string
+                string? customWord = null; // Initialize as a nullable string
                 if (customWordResponse == "yes" || customWordResponse == "sí")
                 {
                     Console.WriteLine(language == "es" ? "Por favor, ingresa tu palabra personalizada:" : "Please enter your custom word:");
