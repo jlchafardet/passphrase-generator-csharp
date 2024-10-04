@@ -38,7 +38,7 @@ namespace PassphraseGeneratorApp
 
                 if (vowelReplacement)
                 {
-                    word = ReplaceVowels(word);
+                    word = ReplaceVowels(word); // Call the ReplaceVowels method
                 }
 
                 selectedWords.Add(RandomCaseSwap(word));
@@ -49,8 +49,29 @@ namespace PassphraseGeneratorApp
 
         private string ReplaceVowels(string word)
         {
-            // Implement vowel replacement logic here
-            return word; // Placeholder
+            // Define a mapping for vowel replacement, excluding 'u'
+            var vowelMapping = new Dictionary<char, char>
+            {
+                { 'a', '@' },
+                { 'e', '3' },
+                { 'i', '!' },
+                { 'o', '0' },
+                { 'A', '@' },
+                { 'E', '3' },
+                { 'I', '!' },
+                { 'O', '0' }
+                // 'u' and 'U' are not included in the mapping
+            };
+
+            char[] characters = word.ToCharArray();
+            for (int i = 0; i < characters.Length; i++)
+            {
+                if (vowelMapping.ContainsKey(characters[i]))
+                {
+                    characters[i] = vowelMapping[characters[i]]; // Replace vowel with mapped character
+                }
+            }
+            return new string(characters);
         }
 
         private string RandomCaseSwap(string word)
