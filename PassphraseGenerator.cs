@@ -35,6 +35,12 @@ namespace PassphraseGeneratorApp
         // Generates a passphrase consisting of a specified number of words, with optional vowel replacement
         public string GeneratePassphrase(int wordCount, bool vowelReplacement)
         {
+            // Validate maximum word count
+            if (wordCount < 2 || wordCount > 15)
+            {
+                throw new ArgumentOutOfRangeException(nameof(wordCount), "Word count must be between 2 and 15.");
+            }
+
             if (wordCount > wordList.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(wordCount), $"Requested word count {wordCount} exceeds available words in the list."); // Validate word count
@@ -56,7 +62,15 @@ namespace PassphraseGeneratorApp
                 selectedWords.Add(RandomCaseSwap(word)); // Add the word (with case swapped) to the selectedWords list
             }
 
-            return string.Join(" ", selectedWords); // Join the selected words into a single passphrase string
+            string passphrase = string.Join(" ", selectedWords); // Join the selected words into a single passphrase string
+
+            // Validate maximum character length
+            if (passphrase.Length > 128)
+            {
+                throw new InvalidOperationException("Generated passphrase exceeds the maximum length of 128 characters.");
+            }
+
+            return passphrase; // Return the generated passphrase
         }
 
         // Replaces vowels in the given word according to a predefined mapping
