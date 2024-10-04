@@ -45,7 +45,6 @@ dotnet run --language en --word-length 5 --vowel-replacement true
 **Phase 1 (Easy-Moderate)**
 -------------------------
 
-- Add support for more languages (e.g., French, German, Italian)
 - Implement a feature to generate passphrases with a specific theme (e.g., animals, countries, foods)
 - Allow users to specify a custom wordlist file
 - Add a feature to generate passphrases with a specific number of syllables
