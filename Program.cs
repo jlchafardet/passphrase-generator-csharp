@@ -48,7 +48,7 @@ namespace PassphraseGeneratorApp
             Console.WriteLine("┌" + new string('─', boxWidth) + "┐");
             // Center the title correctly
             int padding = (boxWidth - appName.Length - 2) / 2; // Calculate padding for centering
-            Console.WriteLine("│" + new string(' ', padding) + appName + new string(' ', boxWidth - appName.Length - padding - 2) + "│");
+            Console.WriteLine("│" + new string(' ', padding) + appName + new string(' ', boxWidth - appName.Length - padding ) + "│");
             Console.WriteLine("└" + new string('─', boxWidth) + "┘");
             Console.ResetColor(); // Reset color for subsequent output
 
