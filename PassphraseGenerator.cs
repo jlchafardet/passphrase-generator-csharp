@@ -6,25 +6,31 @@ namespace PassphraseGeneratorApp
 {
     public class PassphraseGenerator
     {
-        private List<string> wordList = new List<string>(); // List to hold words from the loaded wordlist
+        private List<string> wordList; // List to hold words from the loaded wordlist
+        private static readonly Random random = new Random(); // Reuse the same Random instance
 
         // Constructor that initializes the PassphraseGenerator with the specified language
         public PassphraseGenerator(string language)
         {
-            LoadWordList(language); // Load the appropriate wordlist based on the language
+            wordList = LoadWordList(language); // Load the appropriate wordlist based on the language
         }
 
         // Loads the wordlist from a file based on the specified language
-        private void LoadWordList(string language)
+        private List<string> LoadWordList(string language)
         {
             string filePath = $"wordlists/words-{language}.txt"; // Construct the file path for the wordlist
             if (File.Exists(filePath))
             {
-                wordList = new List<string>(File.ReadAllLines(filePath)); // Read all lines from the file into the wordList
-                if (wordList.Count == 0)
+                var words = new List<string>();
+                using (var reader = new StreamReader(filePath))
                 {
-                    throw new InvalidOperationException($"The wordlist for language '{language}' is empty."); // Check if the wordlist is empty
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        words.Add(line); // Read each line into the words list
+                    }
                 }
+                return words; // Return the loaded wordlist
             }
             else
             {
@@ -33,7 +39,7 @@ namespace PassphraseGeneratorApp
         }
 
         // Generates a passphrase consisting of a specified number of words, with optional vowel replacement
-        public string GeneratePassphrase(int wordCount, bool vowelReplacement, string? customWord = null) // Change to string?
+        public string GeneratePassphrase(int wordCount, bool vowelReplacement, string? customWord = null)
         {
             // Validate maximum word count
             if (wordCount < 2 || wordCount > 15)
@@ -46,8 +52,7 @@ namespace PassphraseGeneratorApp
                 throw new ArgumentOutOfRangeException(nameof(wordCount), $"Requested word count {wordCount} exceeds available words in the list."); // Validate word count
             }
 
-            Random random = new Random(); // Random number generator
-            List<string> selectedWords = new List<string>(); // List to hold the selected words for the passphrase
+            List<string> selectedWords = new List<string>(wordCount); // Pre-allocate based on expected size
 
             // Include custom word if provided
             if (!string.IsNullOrEmpty(customWord))
@@ -122,7 +127,6 @@ namespace PassphraseGeneratorApp
         private string RandomCaseSwap(string word)
         {
             char[] characters = word.ToCharArray(); // Convert the word to a character array
-            Random random = new Random(); // Random number generator
             for (int i = 0; i < characters.Length; i++)
             {
                 if (random.Next(2) == 0) // 50% chance to swap case
