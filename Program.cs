@@ -28,7 +28,18 @@ namespace PassphraseGeneratorApp
                         case "--word-length":
                             if (i + 1 < args.Length && int.TryParse(args[++i], out int length))
                             {
-                                wordCount = Math.Max(length, 2); // Ensure minimum word length is 2
+                                // Validate word length to ensure it's a reasonable value
+                                if (length < 2)
+                                {
+                                    Console.WriteLine("Error: Word length must be at least 2.");
+                                    return; // Exit the program
+                                }
+                                wordCount = length; // Set word count based on user input
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: Invalid word length. Please provide a valid integer.");
+                                return; // Exit the program
                             }
                             break;
                         case "--vowel-replacement":
@@ -37,6 +48,9 @@ namespace PassphraseGeneratorApp
                                 vowelReplacement = replacement; // Set vowel replacement based on user input
                             }
                             break;
+                        default:
+                            Console.WriteLine($"Error: Unknown argument '{args[i]}'.");
+                            return; // Exit the program
                     }
                 }
             }
@@ -66,10 +80,15 @@ namespace PassphraseGeneratorApp
                 Console.WriteLine(passphrase); // Print the generated passphrase
                 Console.ResetColor(); // Reset to default color
             }
+            catch (FileNotFoundException ex)
+            {
+                // Print error message if the wordlist file is not found
+                Console.WriteLine($"Error: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                // Print error message if an exception occurs
-                Console.WriteLine($"Error: {ex.Message}");
+                // Print error message for any other exceptions
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
     }

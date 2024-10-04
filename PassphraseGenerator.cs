@@ -21,6 +21,10 @@ namespace PassphraseGeneratorApp
             if (File.Exists(filePath))
             {
                 wordList = new List<string>(File.ReadAllLines(filePath)); // Read all lines from the file into the wordList
+                if (wordList.Count == 0)
+                {
+                    throw new InvalidOperationException($"The wordlist for language '{language}' is empty."); // Check if the wordlist is empty
+                }
             }
             else
             {
@@ -31,6 +35,11 @@ namespace PassphraseGeneratorApp
         // Generates a passphrase consisting of a specified number of words, with optional vowel replacement
         public string GeneratePassphrase(int wordCount, bool vowelReplacement)
         {
+            if (wordCount > wordList.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(wordCount), $"Requested word count {wordCount} exceeds available words in the list."); // Validate word count
+            }
+
             Random random = new Random(); // Random number generator
             List<string> selectedWords = new List<string>(); // List to hold the selected words for the passphrase
 
