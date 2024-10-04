@@ -6,15 +6,40 @@ namespace PassphraseGeneratorApp
     {
         static void Main(string[] args)
         {
-            if (args.Length < 3)
-            {
-                Console.WriteLine("Usage: dotnet run --language <en|es> --word-length <number> --vowel-replacement <true|false>");
-                return;
-            }
+            // Set default values
+            string language = "en"; // Default language
+            int wordCount = 2; // Default minimum word length
+            bool vowelReplacement = false; // Default vowel replacement
 
-            string language = args[1];
-            int wordCount = int.Parse(args[3]);
-            bool vowelReplacement = bool.Parse(args[5]);
+            // Check for command-line arguments
+            if (args.Length > 0)
+            {
+                // Parse command-line arguments
+                for (int i = 0; i < args.Length; i++)
+                {
+                    switch (args[i])
+                    {
+                        case "--language":
+                            if (i + 1 < args.Length)
+                            {
+                                language = args[++i]; // Set language to the first parameter received
+                            }
+                            break;
+                        case "--word-length":
+                            if (i + 1 < args.Length && int.TryParse(args[++i], out int length))
+                            {
+                                wordCount = Math.Max(length, 2); // Ensure minimum word length is 2
+                            }
+                            break;
+                        case "--vowel-replacement":
+                            if (i + 1 < args.Length && bool.TryParse(args[++i], out bool replacement))
+                            {
+                                vowelReplacement = replacement;
+                            }
+                            break;
+                    }
+                }
+            }
 
             try
             {
