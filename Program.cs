@@ -58,7 +58,7 @@ namespace PassphraseGeneratorApp
                 string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement);
 
                 // Output messages in the requested language
-                string generatedMessage = language == "es" ? "Frase de paso generada: " : "Generated Passphrase: ";
+                string generatedMessage = language == "es" ? "Frase de contraseña generada: " : "Generated Passphrase: ";
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(generatedMessage);
                 Console.ForegroundColor = ConsoleColor.Green;
