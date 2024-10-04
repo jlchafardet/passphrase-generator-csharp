@@ -33,7 +33,7 @@ namespace PassphraseGeneratorApp
         }
 
         // Generates a passphrase consisting of a specified number of words, with optional vowel replacement
-        public string GeneratePassphrase(int wordCount, bool vowelReplacement)
+        public string GeneratePassphrase(int wordCount, bool vowelReplacement, string customWord = null)
         {
             // Validate maximum word count
             if (wordCount < 2 || wordCount > 15)
@@ -41,7 +41,7 @@ namespace PassphraseGeneratorApp
                 throw new ArgumentOutOfRangeException(nameof(wordCount), "Word count must be between 2 and 15.");
             }
 
-            if (wordCount > wordList.Count)
+            if (wordCount > wordList.Count + (customWord != null ? 1 : 0))
             {
                 throw new ArgumentOutOfRangeException(nameof(wordCount), $"Requested word count {wordCount} exceeds available words in the list."); // Validate word count
             }
@@ -49,7 +49,13 @@ namespace PassphraseGeneratorApp
             Random random = new Random(); // Random number generator
             List<string> selectedWords = new List<string>(); // List to hold the selected words for the passphrase
 
-            for (int i = 0; i < wordCount; i++)
+            // Include custom word if provided
+            if (!string.IsNullOrEmpty(customWord))
+            {
+                selectedWords.Add(customWord);
+            }
+
+            for (int i = selectedWords.Count; i < wordCount; i++)
             {
                 int index = random.Next(wordList.Count); // Select a random index from the wordList
                 string word = wordList[index]; // Get the word at the selected index
