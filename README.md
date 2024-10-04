@@ -2,6 +2,8 @@
 
 A console app for generating strong and unique passphrases.
 
+![Passphrase Generator](https://i.imgur.com/L2Azhow.png)
+
 ## Features
 
 - Generate passphrases using wordlists (English and Spanish)
