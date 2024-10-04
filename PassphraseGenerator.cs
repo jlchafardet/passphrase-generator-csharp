@@ -57,17 +57,23 @@ namespace PassphraseGeneratorApp
 
             int maxVowelReplacementCount = wordCount / 2; // Calculate max words for vowel replacement
             int vowelReplacedCount = 0; // Counter for words with vowel replacement
+            bool lastWordVowelReplaced = false; // Track if the last word had its vowels replaced
 
             for (int i = selectedWords.Count; i < wordCount; i++)
             {
                 int index = random.Next(wordList.Count); // Select a random index from the wordList
                 string word = wordList[index]; // Get the word at the selected index
 
-                // Apply vowel replacement only if the limit has not been reached
-                if (vowelReplacement && vowelReplacedCount < maxVowelReplacementCount)
+                // Apply vowel replacement only if the limit has not been reached and the last word did not have vowels replaced
+                if (vowelReplacement && vowelReplacedCount < maxVowelReplacementCount && !lastWordVowelReplaced)
                 {
                     word = ReplaceVowels(word); // Replace vowels in the word if specified
                     vowelReplacedCount++; // Increment the count of replaced words
+                    lastWordVowelReplaced = true; // Mark that the last word had its vowels replaced
+                }
+                else
+                {
+                    lastWordVowelReplaced = false; // Reset if no replacement occurs
                 }
 
                 selectedWords.Add(RandomCaseSwap(word)); // Add the word (with case swapped) to the selectedWords list
