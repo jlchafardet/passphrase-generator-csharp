@@ -85,7 +85,7 @@ namespace PassphraseGeneratorApp
 
                 // Create an instance of PassphraseGenerator and generate a passphrase
                 PassphraseGenerator generator = new PassphraseGenerator(language);
-                string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement, customWord);
+                string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement, customWord ?? string.Empty);
 
                 // Output messages in the requested language
                 string generatedMessage = language == "es" ? "Frase de contraseña generada: " : "Generated Passphrase: ";
