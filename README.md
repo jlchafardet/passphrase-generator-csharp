@@ -61,11 +61,15 @@ dotnet run --language en --word-length 5 --vowel-replacement true
 **Phase 3 (Hard)**
 -----------------
 
-- Implement a feature to generate passphrases using a machine learning model (e.g., a neural network)
-- Add support for generating passphrases with a specific linguistic structure (e.g., using a grammar-based approach)
-- Implement a feature to generate passphrases with a specific semantic meaning (e.g., using a knowledge graph)
-- Allow users to specify a custom machine learning model for passphrase generation
-- Improve performance by optimizing machine learning model loading and passphrase generation
+- **Implement a feature to generate passphrases with a specific linguistic structure**:
+  - Define what constitutes a linguistic structure (e.g., noun-verb-noun).
+  - Create a set of rules for generating passphrases based on these structures.
+  - Implement a mechanism to select words that fit the defined structure.
+
+- **Implement a feature to generate passphrases with a specific semantic meaning**:
+  - Research and define what types of semantic meanings can be used (e.g., themes like "adventure" or "safety").
+  - Create a mapping of words to their semantic categories.
+  - Develop a method to generate passphrases that align with the chosen semantic meaning.
 
 **Future Features (Graphic User Interface)**
 ------------------------------------------
@@ -73,6 +77,16 @@ dotnet run --language en --word-length 5 --vowel-replacement true
 - Implement a graphic user interface (GUI) for the passphrase generator
 - Allow users to interact with the passphrase generator using a GUI
 - Implement features such as passphrase history, favorites, and password analysis
+
+**Future Features (Web-Based Version)**
+----------------------------------------
+
+- Implement a web-based version of the passphrase generator
+- Allow users to access the passphrase generator through a web interface
+- Include features such as:
+  - User authentication to save favorite passphrases
+  - A history of generated passphrases for easy access
+  - Responsive design for mobile and desktop users
 
 ## Contributing
 
