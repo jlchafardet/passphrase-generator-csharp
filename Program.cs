@@ -43,19 +43,22 @@ namespace PassphraseGeneratorApp
 
             // Boxed title
             string appName = "Passphrase Generator";
-            int boxWidth = appName.Length + 4; // Width of the box
+            int boxWidth = Math.Max(appName.Length + 4, 60); // Minimum width of 60 characters
+            Console.ForegroundColor = ConsoleColor.Blue; // Set color for the title box
             Console.WriteLine("┌" + new string('─', boxWidth) + "┐");
-            Console.WriteLine("│  " + appName + "  │");
+            Console.WriteLine("│" + new string(' ', (boxWidth - appName.Length - 2) / 2) + appName + new string(' ', (boxWidth - appName.Length - 2 + 1) / 2) + "│");
             Console.WriteLine("└" + new string('─', boxWidth) + "┘");
+            Console.ResetColor(); // Reset color for subsequent output
 
             try
             {
                 PassphraseGenerator generator = new PassphraseGenerator(language);
                 string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement);
 
-                // Output with colors
+                // Output messages in the requested language
+                string generatedMessage = language == "es" ? "Frase de paso generada: " : "Generated Passphrase: ";
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Generated Passphrase: ");
+                Console.WriteLine(generatedMessage);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(passphrase);
                 Console.ResetColor(); // Reset to default color
