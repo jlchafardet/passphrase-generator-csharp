@@ -72,11 +72,11 @@ namespace PassphraseGeneratorApp
                 Console.WriteLine("Do you want to add a custom word to your passphrase? (yes/no)");
                 string customWordResponse = Console.ReadLine()?.ToLower();
 
-                string customWord = string.Empty;
+                string? customWord = null; // Change to nullable
                 if (customWordResponse == "yes" || customWordResponse == "sí")
                 {
                     Console.WriteLine("Please enter your custom word:");
-                    customWord = Console.ReadLine();
+                    customWord = Console.ReadLine(); // This can be null if the user just presses Enter
                     wordCount++; // Increment word count to include the custom word
                 }
 

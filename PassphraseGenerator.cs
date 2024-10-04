@@ -33,7 +33,7 @@ namespace PassphraseGeneratorApp
         }
 
         // Generates a passphrase consisting of a specified number of words, with optional vowel replacement
-        public string GeneratePassphrase(int wordCount, bool vowelReplacement, string customWord = null)
+        public string GeneratePassphrase(int wordCount, bool vowelReplacement, string? customWord = null) // Change to string?
         {
             // Validate maximum word count
             if (wordCount < 2 || wordCount > 15)
