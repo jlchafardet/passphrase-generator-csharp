@@ -82,10 +82,10 @@ namespace PassphraseGeneratorApp
                     : "Do you want to add a custom word to your passphrase? (yes/no)";
                 
                 Console.WriteLine(customWordPrompt);
-                string customWordResponse = Console.ReadLine()?.ToLower();
+                string? customWordResponse = Console.ReadLine(); // Read input as nullable
 
                 string? customWord = null; // Initialize as a nullable string
-                if (customWordResponse == "yes" || customWordResponse == "sí")
+                if (customWordResponse != null && (customWordResponse.Equals("yes", StringComparison.OrdinalIgnoreCase) || customWordResponse.Equals("sí", StringComparison.OrdinalIgnoreCase)))
                 {
                     Console.WriteLine(language == "es" ? "Por favor, ingresa tu palabra personalizada:" : "Please enter your custom word:");
                     string? customWordInput = Console.ReadLine(); // Read input separately
