@@ -10,7 +10,6 @@ A console app for generating strong and unique passphrases.
 - Randomly swap cases (uppercase) at least half of the letters on each word
 - Handle errors and exceptions
 
-
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/jlchafardet/passphrase-generator-csharp.git`
@@ -25,7 +24,7 @@ To generate a passphrase, run the project with the desired arguments:
 dotnet run --language en --word-length 5 --vowel-replacement true
 ```
 
-### To-Do and phase deffinition
+### To-Do and phase definition
 
 **Passphrase Generator Features**
 =====================================
@@ -33,11 +32,11 @@ dotnet run --language en --word-length 5 --vowel-replacement true
 **MVP (Minimum Viable Product)**
 -----------------------------
 
-- Generate passphrases using wordlists (English and Spanish)
-- Accept arguments for language, word length, and vowel replacement
-- Meet minimum and maximum length requirements (12-128 characters, 2-15 words)
-- Randomly swap cases (uppercase) at least half of the letters on each word
-- Handle errors and exceptions
+- ~~Generate passphrases using wordlists (English and Spanish)~~
+- ~~Accept arguments for language, word length, and vowel replacement~~
+- ~~Meet minimum and maximum length requirements (12-128 characters, 2-15 words)~~
+- ~~Randomly swap cases (uppercase) at least half of the letters on each word~~
+- ~~Handle errors and exceptions~~
 
 **Phase 1 (Easy-Moderate)**
 -------------------------
