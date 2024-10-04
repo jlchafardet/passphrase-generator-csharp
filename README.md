@@ -47,6 +47,7 @@ dotnet run --language en --word-length 5 --vowel-replacement true
 - Add a feature to generate passphrases with a specific number of syllables
 - Improve performance by optimizing wordlist loading and passphrase generation
 - ~~Allow users to add a custom word to their passphrase~~  <!-- New feature added -->
+- ~~Implement -help argument to display usage information~~  <!-- New feature added -->
 
 **Phase 2 (Moderate-Hard)**
 -------------------------
