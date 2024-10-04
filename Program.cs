@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace PassphraseGeneratorApp
 {
@@ -7,10 +6,26 @@ namespace PassphraseGeneratorApp
     {
         static void Main(string[] args)
         {
-            // Parse command-line arguments
-            // Load wordlists from the "wordlists" directory
-            // Call the PassphraseGenerator to generate a passphrase
-            // Output the generated passphrase
+            if (args.Length < 3)
+            {
+                Console.WriteLine("Usage: dotnet run --language <en|es> --word-length <number> --vowel-replacement <true|false>");
+                return;
+            }
+
+            string language = args[1];
+            int wordCount = int.Parse(args[3]);
+            bool vowelReplacement = bool.Parse(args[5]);
+
+            try
+            {
+                PassphraseGenerator generator = new PassphraseGenerator(language);
+                string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement);
+                Console.WriteLine($"Generated Passphrase: {passphrase}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
     }
 }
