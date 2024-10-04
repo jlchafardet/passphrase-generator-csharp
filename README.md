@@ -45,7 +45,7 @@ dotnet run --language en --word-length 5 --vowel-replacement true
 - Implement a feature to generate passphrases with a specific theme (e.g., animals, countries, foods)
 - Allow users to specify a custom wordlist file
 - Add a feature to generate passphrases with a specific number of syllables
-- Improve performance by optimizing wordlist loading and passphrase generation
+- ~~Improve performance by optimizing wordlist loading and passphrase generation~~
 - ~~Allow users to add a custom word to their passphrase~~  <!-- New feature added -->
 - ~~Implement -help argument to display usage information~~  <!-- New feature added -->
 
