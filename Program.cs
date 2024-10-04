@@ -6,8 +6,8 @@ namespace PassphraseGeneratorApp
     {
         static void Main(string[] args)
         {
-            // Check for the --help argument
-            if (args.Length > 0 && args[0] == "--help")
+            // Check for the -help argument
+            if (args.Length > 0 && args[0] == "-help")
             {
                 DisplayHelp();
                 return; // Exit the application after displaying help
@@ -127,7 +127,7 @@ namespace PassphraseGeneratorApp
             Console.WriteLine("  --language <lang>          Set the language for the passphrase (default: en)");
             Console.WriteLine("  --word-length <length>     Set the number of words in the passphrase (default: 2, range: 2-15)");
             Console.WriteLine("  --vowel-replacement <true|false>  Enable or disable vowel replacement (default: false)");
-            Console.WriteLine("  --help                     Display this help message.");
+            Console.WriteLine("  -help                      Display this help message.");
             Console.WriteLine();
             Console.WriteLine("If no arguments are provided, the application defaults to generating a passphrase with 2 words in English.");
         }
