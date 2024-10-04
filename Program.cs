@@ -72,7 +72,7 @@ namespace PassphraseGeneratorApp
                 Console.WriteLine("Do you want to add a custom word to your passphrase? (yes/no)");
                 string customWordResponse = Console.ReadLine()?.ToLower();
 
-                string? customWord = null; // Change to nullable
+                string customWord = string.Empty; // Initialize as an empty string
                 if (customWordResponse == "yes" || customWordResponse == "sí")
                 {
                     Console.WriteLine("Please enter your custom word:");
@@ -85,7 +85,7 @@ namespace PassphraseGeneratorApp
 
                 // Create an instance of PassphraseGenerator and generate a passphrase
                 PassphraseGenerator generator = new PassphraseGenerator(language);
-                string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement, customWord ?? string.Empty);
+                string passphrase = generator.GeneratePassphrase(wordCount, vowelReplacement, customWord);
 
                 // Output messages in the requested language
                 string generatedMessage = language == "es" ? "Frase de contraseña generada: " : "Generated Passphrase: ";
