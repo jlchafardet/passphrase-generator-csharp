@@ -8,6 +8,8 @@ A console app for generating strong and unique passphrases.
 - Accept arguments for language, word length, and vowel replacement
 - Meet minimum and maximum length requirements (12-128 characters, 2-15 words)
 - Randomly swap cases (uppercase) at least half of the letters on each word
+- Allow users to add a custom word to their passphrase
+- Display help information with the `-help` argument
 - Handle errors and exceptions
 
 ## Installation
