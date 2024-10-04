@@ -46,7 +46,9 @@ namespace PassphraseGeneratorApp
             int boxWidth = Math.Max(appName.Length + 4, 60); // Minimum width of 60 characters
             Console.ForegroundColor = ConsoleColor.Blue; // Set color for the title box
             Console.WriteLine("┌" + new string('─', boxWidth) + "┐");
-            Console.WriteLine("│" + new string(' ', (boxWidth - appName.Length - 2) / 2) + appName + new string(' ', (boxWidth - appName.Length - 2 + 1) / 2) + "│");
+            // Center the title correctly
+            int padding = (boxWidth - appName.Length - 2) / 2; // Calculate padding for centering
+            Console.WriteLine("│" + new string(' ', padding) + appName + new string(' ', boxWidth - appName.Length - padding - 2) + "│");
             Console.WriteLine("└" + new string('─', boxWidth) + "┘");
             Console.ResetColor(); // Reset color for subsequent output
 
