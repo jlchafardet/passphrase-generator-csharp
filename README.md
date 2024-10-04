@@ -13,7 +13,7 @@ A console app for generating strong and unique passphrases.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/jlchafardet/passphrase-generator.git`
+1. Clone the repository: `git clone https://github.com/jlchafardet/passphrase-generator-csharp.git`
 2. Navigate to the project directory: `cd passphrase-generator`
 3. Build and run the project: `dotnet run`
 
